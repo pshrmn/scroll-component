@@ -20,6 +20,7 @@
   "keywords": [
     "react",
     "scroll",
+    "scrollIntoView",
     "react-router",
     "fragment",
     "identifier",
