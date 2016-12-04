@@ -1,10 +1,48 @@
 # scroll-component
 
-When using [React Router v4](https://github.com/ReactTraining/react-router/tree/v4), you might have noticed that when you navigate, the page does not automatically scroll to the hash portion of the URI. With the `<ScrollIntoView>` component, you can pass it an `id` value which will identify an element in the page and scroll to it.
+When using [React Router v4](https://github.com/ReactTraining/react-router/tree/v4), you might have noticed that when you navigate, the page does not automatically scroll to the hash portion of the URI.
 
-This uses [`element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) to scroll. It supports the `alignToTop` argument because it is widely supported, but not the `scrollIntOViewOptions` because it is currently only supported by Firefox.
+With the `<ScrollIntoView>` component, you can pass it an `id` value which will identify an element in the page and scroll to it. This uses [`element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) to scroll. It supports the `alignToTop` argument because it is widely supported, but not the `scrollIntOViewOptions` because it is currently only supported by Firefox.
+
+### Example
+
+React Router provides its matched components with a `location` prop. This is an object with the current location divided into its `pathname`, `search`, and most importantly `hash` properties. The `hash` value is the element identifier that you should pass to the `<ScrollIntoView>` component.
+
+**Note:** This will not work with a hash history because the hash portion of the URL is being used for routing.
+
+```js
+import React from 'react'
+import ScrollIntoView from 'scroll-component'
+
+const FAQ = (props) => (
+  <div>
+    <ScrollIntoView id={props.location.hash} />
+    <div id='who'>...</div>
+    <div id='what'>...</div>
+    <div id='where'>...</div>
+    <div id='when'>...</div>
+    <div id='why'>...</div>
+    <div id='how'>...</div>
+  </div>
+)
+```
 
 ## `<ScrollIntoView>`
+
+### Usage
+
+```js
+const Foo = (props) => (
+  <ScrollIntoView id={props.location.hash}>
+    <div>
+      <h1>My View</h1>
+      <div id='scroll'>Scroll to me!</div>
+    </div>
+  </ScrollIntoView>
+)
+ 
+<Match pattern='/foo' component={Foo} />
+```
 
 #### `id`
 
@@ -38,29 +76,6 @@ const PageTwo = (props) => (
   <ScrollIntoView id={props.location.hash}>
     <h1>Page Two</h1>
   </ScrollIntoView>
-)
-```
-
-### Example
-
-React Router provides its matched components with a `location` prop. This is an object with the current location divided into its `pathname`, `search`, and most importantly `hash` properties. The `hash` value is the element identifier that you should pass to the `<ScrollIntoView>` component.
-
-**Note:** This will not work with a hash history because the hash portion of the URL is being used for routing.
-
-```js
-import React from 'react'
-import ScrollIntoView from 'scroll-component'
-
-const FAQ = (props) => (
-  <div>
-    <ScrollIntoView id={props.location.hash} />
-    <div id='who'>...</div>
-    <div id='what'>...</div>
-    <div id='where'>...</div>
-    <div id='when'>...</div>
-    <div id='why'>...</div>
-    <div id='how'>...</div>
-  </div>
 )
 ```
 
