@@ -22,7 +22,9 @@ export default class ScrollIntoView extends React.Component {
 
     const element = document.querySelector(id)
     if (element && element.scrollIntoView) {
-      element.scrollIntoView(alignToTop)
+      setTimeout(() => {
+        element.scrollIntoView(alignToTop)
+      }, 0)
     }
   }
 

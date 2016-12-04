@@ -3,6 +3,8 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import renderer from 'react-test-renderer'
 import ScrollIntoView from '../ScrollIntoView'
 
+jest.useFakeTimers()
+
 // mock Element.scrollIntoView
 const mockScroll = jest.fn()
 Element.prototype.scrollIntoView = mockScroll
@@ -47,20 +49,24 @@ describe('<ScrollIntoView>', () => {
 
     it('calls Element.scrollIntoView when mounting', () => {
       renderScroll(<ScrollIntoView id={hash}/>)
+      jest.runAllTimers()
       expect(mockScroll.mock.calls.length).toBe(1)
     })
 
     it('calls Element.scrollIntoView when updating', () => {
       // mount
       renderScroll(<ScrollIntoView id={hash}/>)
+      jest.runAllTimers()
       expect(mockScroll.mock.calls.length).toBe(1)
       // update
       renderScroll(<ScrollIntoView id={hash}/>)
+      jest.runAllTimers()
       expect(mockScroll.mock.calls.length).toBe(2)
     })
 
     it('calls Element.scrollIntoView(false) when alignToTop=false', () => {
       renderScroll(<ScrollIntoView id={hash} alignToTop={false} />)
+      jest.runAllTimers()
       expect(mockScroll.mock.calls.length).toBe(1)
       // first call, first value
       expect(mockScroll.mock.calls[0][0]).toBe(false)
