@@ -63,3 +63,38 @@ const FAQ = (props) => (
   </div>
 )
 ```
+
+## `withScroll`
+
+The `withScroll` function provides a higher order component to wrap your view component. It can take two options, which help it control the props passed to the `<ScrollIntoView>` component.
+
+### Usage
+
+```js
+const Foo = (props) => (
+  <div>
+    <h1>My View</h1>
+    <div id='scroll'>Scroll to me!</div>
+  </div>
+)
+
+<Match pattern='/foo' component={withScroll(Foo)} />
+```
+
+### Options
+
+#### `propId`
+
+If provided, `propId` is a function that will return the `id` of the element which should be scrolled to. The function will be passed the `props` object that is used to render the component. The default `propId` function returns `props.location.hash`, which is the location of the hash that is passed by React Router to matched components.
+
+```js
+<Match pattern='/foo' component={withScroll(Foo, { propId: () => '#scroll' })} />
+```
+
+#### `alignToTop`
+
+You can specify the scroll alignment with the `alignToTop` option. `true` is the default value while `false` will align the bottom of the scrolled to element with the bottom of the page.
+
+```
+<Match pattern='/foo' component={withScroll(Foo, { alignToTop: false })} />
+```
