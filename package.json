@@ -1,6 +1,6 @@
 {
   "name": "scroll-component",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Scroll to the element with the provided ID",
   "main": "lib/index.js",
   "files": [
