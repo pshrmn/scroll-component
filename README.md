@@ -1,6 +1,6 @@
 # DEPRECATED
 
-### components have been moved to https://github.com/pshrmn/rcc
+### components have been moved to https://github.com/pshrmn/rrc
 
 ## scroll-component
 
