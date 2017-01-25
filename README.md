@@ -1,4 +1,8 @@
-# scroll-component
+# DEPRECATED
+
+### components have been moved to https://github.com/pshrmn/rcc
+
+## scroll-component
 
 When using [React Router v4](https://github.com/ReactTraining/react-router/tree/v4), you might have noticed that when you navigate, the page does not automatically scroll to the hash portion of the URI.
 
